@@ -1,7 +1,7 @@
 # Financial Engineering and Time Series Analytics
 
-**Published:** 2025-02-27
-**Medium:** [https://medium.com/@kyle-t-jones/financial-engineering-and-time-series-analytics-560f024db271](https://medium.com/@kyle-t-jones/financial-engineering-and-time-series-analytics-560f024db271)
+Published: 2025-02-27
+Medium: [https://medium.com/@kyle-t-jones/financial-engineering-and-time-series-analytics-560f024db271](https://medium.com/@kyle-t-jones/financial-engineering-and-time-series-analytics-560f024db271)
 
 ## About
 

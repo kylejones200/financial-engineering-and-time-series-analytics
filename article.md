@@ -17,7 +17,7 @@ Differencing helps remove trends and makes the data stationary:
 Higher-order differencing can remove seasonality:
 
 
-**Python Implementation:**
+Python Implementation:
 
 
 This code demonstrates how to create lag features and differencing to capture trends and momentum.
@@ -31,7 +31,7 @@ Log Returns:
 Rolling Volatility:
 
 
-**Python Implementation:**
+Python Implementation:
 
 
 These features enhance models by capturing return dynamics and volatility clustering.
