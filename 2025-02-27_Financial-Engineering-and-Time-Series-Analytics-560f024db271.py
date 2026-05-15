@@ -7,7 +7,6 @@ from tensorflow.keras.layers import LSTM, Dense
 from tensorflow.keras.models import Sequential
 import logging
 import pandas as pd
-import tensorflow as tf
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
