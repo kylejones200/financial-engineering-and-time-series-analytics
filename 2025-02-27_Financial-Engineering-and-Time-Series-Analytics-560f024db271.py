@@ -91,7 +91,7 @@ def main():
     model = Sequential(
         [LSTM(50, return_sequences=True, input_shape=(10, 1)), LSTM(50), Dense(1)]
     )
-        _train_torch(model, X_train, y_train)
+    _train_torch(model, X_train, y_train)
 
 
 if __name__ == "__main__":
