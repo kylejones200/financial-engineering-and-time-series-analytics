@@ -2,6 +2,7 @@
 
 import logging
 
+import numpy as np
 import pandas as pd
 import torch
 import torch.nn as nn
@@ -47,7 +48,7 @@ def _train_torch(
     validation_split: float = 0.2,
     patience: int = 15,
 ) -> nn.Module:
-    """Standard training loop replacing  + model.fit()."""
+    """Standard training loop replacing model.compile() + model.fit()."""
     X_t = torch.FloatTensor(X_train)
     y_t = torch.FloatTensor(y_train)
     if y_t.dim() == 1:
@@ -77,7 +78,7 @@ def _train_torch(
     return model
 
 
-def _predict_torch(model: nn.Module, X_test) -> "np.ndarray":
+def _predict_torch(model: nn.Module, X_test) -> np.ndarray:
     """Replace model.predict()."""
     model.eval()
     with torch.no_grad():
@@ -94,20 +95,20 @@ def main():
     df = pd.DataFrame({"price": [100, 102, 105, 107, 110, 115]})
     df["lag_1"] = df["price"].shift(1)
     df["diff"] = df["price"].diff()
-    logger.info(df)
+    logger.info("\n%s", df)
     df["returns"] = df["price"].pct_change()
     df["volatility"] = df["returns"].rolling(window=3).std()
-    logger.info(df)
+    logger.info("\n%s", df)
     model = ARIMA(df["price"], order=(1, 1, 1))
     model_fit = model.fit()
     logger.info(model_fit.summary())
 
-    X_train = np.random.rand(100, 10, 1)  # Simulated time series data
-    y_train = np.random.rand(100, 1)
-    model = Sequential(
-        [LSTM(50, return_sequences=True, input_shape=(10, 1)), LSTM(50), Dense(1)]
-    )
-    _train_torch(model, X_train, y_train)
+    X_train = np.random.rand(100, 10, 1).astype(np.float32)
+    y_train = np.random.rand(100, 1).astype(np.float32)
+    lstm = _LSTMForecaster(n_features=1, hidden=50, output_size=1, n_layers=2)
+    _train_torch(lstm, X_train, y_train, epochs=5)
+    preds = _predict_torch(lstm, X_train[:5])
+    logger.info("LSTM sample predictions shape: %s", preds.shape)
 
 
 if __name__ == "__main__":

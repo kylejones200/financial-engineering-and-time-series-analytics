@@ -11,14 +11,7 @@ Raw financial data is noisy and often contains redundant information. Extracting
 
 Lagged variables capture autocorrelation in financial time series. They are defined as:
 
-## About
 
-Place the code for this article in this repository.
-The original article export is saved as `article.md`.
-
-## Files
-
-Add your `.ipynb`, `.py`, `.yaml`, `.js`, `.ts`, or other project files here.
 
 ## Disclaimer
 
